@@ -2,17 +2,57 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
       @import "./src/style.css";
     </style>
-    <title>JSDev</title>
+    <title>Stock Parts Dashboard</title>
   </head>
   <body>
-    <h1>Alright. You're set.</h1>
-      <h2 class="tintedBlackLeft">Now build something amazing!</h2>
-      <p>JS in FM is amazing</p>
-    <button type="button">Click Me!</button>
+    <div class="container-fluid py-4">
+      <div class="filter-section mb-3">
+        <div class="row g-2">
+          <div class="col-md-4">
+            <input type="text" id="filter-desc" class="form-control form-control-sm" placeholder="Filter Description">
+          </div>
+          <div class="col-md-2">
+            <input type="text" id="filter-serial" class="form-control form-control-sm" placeholder="Filter Serial #">
+          </div>
+          <div class="col-md-2">
+            <input type="text" id="filter-stock" class="form-control form-control-sm" placeholder="Filter Stock #">
+          </div>
+          <div class="col-md-1">
+            <input type="text" id="filter-qty" class="form-control form-control-sm" placeholder="Filter Qty">
+          </div>
+          <div class="col-md-1">
+            <button id="clear-filters" class="btn btn-sm btn-secondary w-100">Clear</button>
+          </div>
+          <div class="col-md-2 d-flex align-items-center justify-content-end">
+            <span class="text-muted fs-6">Showing <strong id="row-count">0</strong> records</span>
+          </div>
+        </div>
+      </div>
 
+      <div class="table-responsive table-scroll">
+        <table id="parts-table" class="table table-hover table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th class="sortable" data-column="ItemDescription">Description <i class="fas fa-arrows-v"></i></th>
+              <th class="sortable" data-column="SerialNumber">Serial # <i class="fas fa-arrows-v"></i></th>
+              <th class="sortable" data-column="stockNumber">Stock # <i class="fas fa-arrows-v"></i></th>
+              <th class="sortable text-center" data-column="pickQty">Qty <i class="fas fa-arrows-v"></i></th>
+              <th class="text-center" style="width: 3rem;"></th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module">
       import "./src/index.js";
     </script>
